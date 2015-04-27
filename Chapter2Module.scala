@@ -57,5 +57,12 @@ object Chapter2Module {
   def uncurry[A,B,C](f: A => B => C): (A, B) => C =
     (a: A, b: B) => f(a)(b)
 
+  /*
+   * EXERCISE 2.5: Implement compose, the higher-order function that composes two functions,
+   * by feeding the output of one function to the input of another function
+   */
+   def compose[A,B,C](f: B => C, g: A => B): A => C =
+     (a: A) => f(g(a))
+
 }
 
