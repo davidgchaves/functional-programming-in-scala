@@ -64,5 +64,16 @@ object Chapter2Module {
    def compose[A,B,C](f: B => C, g: A => B): A => C =
      (a: A) => f(g(a))
 
+  /*
+   * NOTE: Scala implements
+   *  - currying:
+   *    f.curried
+   *  - uncurrying
+   *    f.uncurried
+   *  - composition:
+   *    f compose g
+   *    f andThen g
+   */
+
 }
 
