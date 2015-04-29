@@ -90,5 +90,17 @@ object Chapter3Module {
   // tail(List(1,2,3,4))
   // res6: Chapter3Module.List[Int] = Cons(2,Cons(3,Cons(4,Nil)))
 
+
+  /*
+   * EXERCISE 3.3: Implement the function setHead
+   * for replacing the first element of a List with a different value.
+   */
+  def setHead[A](xs: List[A], x: A): List[A] = xs match {
+    case Nil       => Cons(x,Nil)
+    case Cons(_,t) => Cons(x,t)
+  }
+  // setHead(List(4,5,6,7,8,9), 6)
+  // res12: Chapter3Module.List[Int] = Cons(6,Cons(5,Cons(6,Cons(7,Cons(8,Cons(9,Nil))))))
+
 }
 
