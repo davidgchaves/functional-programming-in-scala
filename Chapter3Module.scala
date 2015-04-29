@@ -58,5 +58,21 @@ object Chapter3Module {
       else Cons(as.head, apply(as.tail: _*))
   }
 
+  /*
+   * EXERCISE 3.1: Guess the result of the following match expression
+   */
+  val x = List(1,2,3,4,5) match {
+    case Cons(x, Cons(2, Cons(4, _)))          => x                //(1)
+    case Nil                                   => 42               //(2)
+    case Cons(x, Cons(y, Cons(3, Cons(4, _)))) => x + y            //(3)
+    case Cons(h, t)                            => h + List.sum(t)  //(4)
+    case _                                     => 101              //(5)
+  }
+
+  /*
+   * (3), (4) and (5) will match, but since (3) is the first one...:
+   *  RESULT: x + y = 1 + 2 = 3
+   */
+
 }
 
