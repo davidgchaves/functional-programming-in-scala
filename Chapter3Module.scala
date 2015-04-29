@@ -102,5 +102,21 @@ object Chapter3Module {
   // setHead(List(4,5,6,7,8,9), 6)
   // res12: Chapter3Module.List[Int] = Cons(6,Cons(5,Cons(6,Cons(7,Cons(8,Cons(9,Nil))))))
 
+
+  /*
+   * EXERCISE 3.4: Generalize tail to the function drop, which removes the first n elements from a list.
+   * Note that this function takes time proportional only to the number of elements being dropped
+   * (we don’t need to make a copy of the entire List).
+   */
+  def drop[A](xs: List[A], n: Int): List[A] = n match {
+    case 0 => xs
+    case _ => xs match {
+      case Nil       => Nil
+      case Cons(_,t) => drop(t, n-1)
+    }
+  }
+  // drop(List(1,2,3,4,5,6), 3)
+  // res15: Chapter3Module.List[Int] = Cons(4,Cons(5,Cons(6,Nil)))
+
 }
 
