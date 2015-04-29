@@ -1,6 +1,8 @@
 /*
  * Load Chapter3Module.scala on the REPL by simply:
  *  scala> :load Chapter3Module.scala
+ * Then it's useful to import everything in the module with:
+ *  scala> import Chapter3Module
  */
 
 object Chapter3Module {
@@ -73,6 +75,20 @@ object Chapter3Module {
    * (3), (4) and (5) will match, but since (3) is the first one...:
    *  RESULT: x + y = 1 + 2 = 3
    */
+
+
+  /*
+   * EXERCISE 3.2: Implement the function tail for removing the first element of a List.
+   * Note that the function takes constant time.
+   * What are different choices you could make in your implementation if the List is Nil?
+   * We’ll return to this question in the next chapter.
+   */
+  def tail[A](xs: List[A]): List[A] = xs match {
+    case Nil       => Nil
+    case Cons(_,t) => t
+  }
+  // tail(List(1,2,3,4))
+  // res6: Chapter3Module.List[Int] = Cons(2,Cons(3,Cons(4,Nil)))
 
 }
 
