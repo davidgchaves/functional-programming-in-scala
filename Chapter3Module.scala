@@ -194,5 +194,24 @@ object Chapter3Module {
     case Cons(a,xs) => foldLeft(xs,f(b,a))(f)
   }
 
+
+  /*
+   * EXERCISE 3.11: Write sum, product, and length using foldLeft
+   */
+  def sumLeft(xs: List[Int]): Int =
+    foldLeft(xs,0)(_+_)
+  // scala> sumLeft(List(1,2,3,4,5))
+  // res97: Int = 15
+
+  def productLeft(xs: List[Int]): Int =
+    foldLeft(xs,1)(_*_)
+  // scala> productLeft(List(1,2,3,4,5))
+  // res100: Int = 120
+
+  def lengthLeft[A](xs: List[A]): Int =
+    foldLeft(xs,0)((acc,_) => acc + 1)
+  // scala> lengthLeft(List(1,2,3,4,5))
+  // res104: Int = 5
+
 }
 
