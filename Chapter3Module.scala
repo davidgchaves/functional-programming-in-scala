@@ -161,5 +161,19 @@ object Chapter3Module {
     case Cons(a,xs) => f(a, foldRight(xs,b)(f))
   }
 
+
+  /*
+   * EXERCISE 3.7b: Write sum and product using foldRight
+   */
+  def sumRight(ns: List[Int]): Int =
+    foldRight(ns,0)(_+_)
+  // scala> sumRight(List(1,2,3,4,5))
+  // res112: Int = 15
+
+  def productRight(ns: List[Double]): Double =
+    foldRight(ns,1.0)(_*_)
+  // scala> productRight(List(1.0,2.0,3.0))
+  // res113: Double = 6.0
+
 }
 
