@@ -146,5 +146,20 @@ object Chapter3Module {
   // scala> init(List(1,2,3,4))
   // res7: Chapter3Module.List[Int] = Cons(1,Cons(2,Cons(3,Nil)))
 
+
+  /*
+   * EXERCISE 3.7a: Implement foldRight:
+   *  - replaces the constructors of the list, Nil and Cons, with b and f
+   *  - must traverse all the way to the end of the list
+   *    (pushing frames onto the call stack as it goes)
+   *    before it can begin collapsing it.
+   *  - not tail-recursive and will result in a StackOverflowError for large lists
+   *    (not stack-safe)
+   */
+  def foldRight[A,B](as: List[A], b: B)(f: (A,B) => B): B = as match {
+    case Nil        => b
+    case Cons(a,xs) => f(a, foldRight(xs,b)(f))
+  }
+
 }
 
