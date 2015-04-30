@@ -134,5 +134,17 @@ object Chapter3Module {
   // dropWhile(List(1,2,3,4,5,6,7), (x: Int) => x < 5)
   // res5: Chapter3Module.List[Int] = Cons(5,Cons(6,Cons(7,Nil)))
 
+
+  /*
+   * EXERCISE 3.6: Implement init, which returns a List consisting of all but the last element of a List.
+   */
+  def init[A](xs: List[A]): List[A] = xs match {
+    case Cons(h,Nil) => Nil
+    case Cons(h,t)   => Cons(h,init(t))
+    case Nil         => Nil
+  }
+  // scala> init(List(1,2,3,4))
+  // res7: Chapter3Module.List[Int] = Cons(1,Cons(2,Cons(3,Nil)))
+
 }
 
