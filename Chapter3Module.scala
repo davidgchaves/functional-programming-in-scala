@@ -122,10 +122,14 @@ object Chapter3Module {
   /*
    * EXERCISE 3.5: Implement dropWhile, which removes elements from the List prefix
    * as long as they match a predicate.
+   *
+   * NOTE: Using a 'pattern guard'.
+   *       Syntax: add 'if <cond>' after the pattern, before the '=>',
+   *               '<cond>' can use any of the variables introduced by the pattern.
    */
   def dropWhile[A](xs: List[A], pred: A => Boolean): List[A] = xs match {
-    case Cons(h,t) => if (pred(h)) dropWhile(t,pred) else xs
-    case _         => xs
+    case Cons(h,t) if (pred(h)) => dropWhile(t,pred)
+    case _                      => xs
   }
   // dropWhile(List(1,2,3,4,5,6,7), (x: Int) => x < 5)
   // res5: Chapter3Module.List[Int] = Cons(5,Cons(6,Cons(7,Nil)))
