@@ -213,5 +213,14 @@ object Chapter3Module {
   // scala> lengthLeft(List(1,2,3,4,5))
   // res104: Int = 5
 
+
+  /*
+   * EXERCISE 3.12: Implement reverse using a fold
+   */
+  def reverse[A](xs: List[A]): List[A] =
+    foldLeft(xs,List[A]())((acc,a) => Cons(a,acc))
+  // scala> reverse(List(1,2,3,4,5))
+  // res118: Chapter3Module.List[Int] = Cons(5,Cons(4,Cons(3,Cons(2,Cons(1,Nil)))))
+
 }
 
