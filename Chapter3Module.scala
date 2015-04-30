@@ -184,5 +184,15 @@ object Chapter3Module {
   // scala> length(List(1,2,3,4,5))
   // res83: Int = 5
 
+
+  /*
+   * EXERCISE 3.10: Implement foldLeft, a tail-recursive (stack-safe) fold
+   */
+  @annotation.tailrec
+  def foldLeft[A,B](as: List[A], b: B)(f: (B, A) => B): B = as match {
+    case Nil => b
+    case Cons(a,xs) => foldLeft(xs,f(b,a))(f)
+  }
+
 }
 
