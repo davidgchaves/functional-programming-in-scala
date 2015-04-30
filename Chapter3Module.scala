@@ -175,5 +175,14 @@ object Chapter3Module {
   // scala> productRight(List(1.0,2.0,3.0))
   // res113: Double = 6.0
 
+
+  /*
+   * EXERCISE 3.9: Implement length, which computes the length of a list using foldRight.
+   */
+  def length[A](xs: List[A]): Int =
+    foldRight(xs,0)((_,acc) => acc + 1)
+  // scala> length(List(1,2,3,4,5))
+  // res83: Int = 5
+
 }
 
