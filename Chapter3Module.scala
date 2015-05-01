@@ -231,5 +231,15 @@ object Chapter3Module {
   // scala> appendRight(List(1,2,3), List(4,5,6))
   // res10: Chapter3Module.List[Int] = Cons(1,Cons(2,Cons(3,Cons(4,Cons(5,Cons(6,Nil))))))
 
+
+  /*
+   * EXERCISE 3.15: Implement flatten, which concatenates a list of lists into a single list.
+   * Its runtime should be linear in the total length of all lists
+   */
+  def flatten[A](xss: List[List[A]]): List[A] =
+    foldRight(xss, Nil: List[A])(appendRight)
+  // scala> flatten(List(List(1,2,3),List(4,5,6),List(7,8,9)))
+  // res28: Chapter3Module.List[Int] = Cons(1,Cons(2,Cons(3,Cons(4,Cons(5,Cons(6,Cons(7,Cons(8,Cons(9,Nil)))))))))
+
 }
 
