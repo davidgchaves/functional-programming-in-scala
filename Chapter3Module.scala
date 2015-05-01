@@ -222,5 +222,14 @@ object Chapter3Module {
   // scala> reverse(List(1,2,3,4,5))
   // res118: Chapter3Module.List[Int] = Cons(5,Cons(4,Cons(3,Cons(2,Cons(1,Nil)))))
 
+
+  /*
+   * EXERCISE 3.14: Implement append in terms of either foldLeft or foldRight
+   */
+  def appendRight[A](as1: List[A], as2: List[A]): List[A] =
+    foldRight(as1,as2)((a1,acc) => Cons(a1,acc))
+  // scala> appendRight(List(1,2,3), List(4,5,6))
+  // res10: Chapter3Module.List[Int] = Cons(1,Cons(2,Cons(3,Cons(4,Cons(5,Cons(6,Nil))))))
+
 }
 
