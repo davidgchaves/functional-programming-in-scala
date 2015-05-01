@@ -250,5 +250,15 @@ object Chapter3Module {
   // scala> addOne(List(2,4,6,8))
   // res37: Chapter3Module.List[Int] = Cons(3,Cons(5,Cons(7,Cons(9,Nil))))
 
+
+  /*
+   * EXERCISE 3.17: Implement a function that turns each value in a List[Double] into a String.
+   * You can use the expression d.toString to convert some d: Double to a String
+   */
+  def toListOfStrings(ds: List[Double]): List[String] =
+    foldRight(ds, Nil: List[String])((d,acc) => Cons(d.toString, acc))
+  // scala> toListOfStrings(List(1.0,2.0,3.5))
+  // res40: Chapter3Module.List[String] = Cons(1.0,Cons(2.0,Cons(3.5,Nil)))
+
 }
 
