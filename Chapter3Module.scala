@@ -241,5 +241,14 @@ object Chapter3Module {
   // scala> flatten(List(List(1,2,3),List(4,5,6),List(7,8,9)))
   // res28: Chapter3Module.List[Int] = Cons(1,Cons(2,Cons(3,Cons(4,Cons(5,Cons(6,Cons(7,Cons(8,Cons(9,Nil)))))))))
 
+
+  /*
+   * EXERCISE 3.16: Implement a function that adds 1 to every integer in a list
+   */
+  def addOne(ns: List[Int]): List[Int] =
+    foldRight(ns, Nil: List[Int])((n,acc) => Cons(n+1,acc))
+  // scala> addOne(List(2,4,6,8))
+  // res37: Chapter3Module.List[Int] = Cons(3,Cons(5,Cons(7,Cons(9,Nil))))
+
 }
 
