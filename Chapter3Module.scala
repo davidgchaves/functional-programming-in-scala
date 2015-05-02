@@ -260,5 +260,15 @@ object Chapter3Module {
   // scala> toListOfStrings(List(1.0,2.0,3.5))
   // res40: Chapter3Module.List[String] = Cons(1.0,Cons(2.0,Cons(3.5,Nil)))
 
+
+  /*
+   * EXERCISE 3.18: Implement a map function that
+   * generalizes modifying each element in a list while maintaining the structure of the list
+   */
+  def map[A,B](as: List[A])(f: A => B): List[B] =
+    foldRight(as, Nil: List[B])((a,bs) => Cons(f(a), bs))
+  // scala> map(List(1,2,3))(_+5)
+  // res2: Chapter3Module.List[Int] = Cons(6,Cons(7,Cons(8,Nil)))
+
 }
 
