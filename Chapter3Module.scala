@@ -280,5 +280,21 @@ object Chapter3Module {
   // scala> filter(List(1,2,3,4,5,6,7,8))(_ % 2 == 1)
   // res7: Chapter3Module.List[Int] = Cons(1,Cons(3,Cons(5,Cons(7,Nil))))
 
+
+  /*
+   * EXERCISE 3.20: Implement a flatMap function that works like map except that
+   * the function given will return a list instead of a single result, and
+   * that list should be inserted into the final resulting list
+   */
+  def flatMap[A,B](as: List[A])(f: A => List[B]): List[B] =
+    foldRight(as, Nil: List[B])((a,bs) => appendRight(f(a), bs))
+  // scala> flatMap(List(1,2,3))(i => List(i,i))
+  // res18: Chapter3Module.List[Int] = Cons(1,Cons(1,Cons(2,Cons(2,Cons(3,Cons(3,Nil))))))
+
+  def flatMap2[A,B](as: List[A])(f: A => List[B]): List[B] =
+    flatten(map(as)(f))
+  // scala> flatMap2(List(1,2,3))(i => List(i,i))
+  // res21: Chapter3Module.List[Int] = Cons(1,Cons(1,Cons(2,Cons(2,Cons(3,Cons(3,Nil))))))
+
 }
 
