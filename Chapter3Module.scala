@@ -270,5 +270,15 @@ object Chapter3Module {
   // scala> map(List(1,2,3))(_+5)
   // res2: Chapter3Module.List[Int] = Cons(6,Cons(7,Cons(8,Nil)))
 
+
+  /*
+   * EXERCISE 3.19: Implement a filter function that
+   * removes elements from a list unless they satisfy a given predicate
+   */
+  def filter[A](as: List[A])(pred: A => Boolean): List[A] =
+    foldRight(as, Nil: List[A])((a,acc) => if (pred(a)) Cons(a, acc) else acc)
+  // scala> filter(List(1,2,3,4,5,6,7,8))(_ % 2 == 1)
+  // res7: Chapter3Module.List[Int] = Cons(1,Cons(3,Cons(5,Cons(7,Nil))))
+
 }
 
