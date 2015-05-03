@@ -318,5 +318,19 @@ object Chapter3Module {
   // scala> addLists(List(1,2,3), List(4,5,6))
   // res15: Chapter3Module.List[Int] = Cons(5,Cons(7,Cons(9,Nil)))
 
+
+  /*
+   * EXERCISE 3.23: Generalize the function you just wrote so that
+   * it's not specific to integers or addition.
+   * Name your generalized function zipWith.
+   */
+  def zipWith[A,B,C](as: List[A], bs: List[B])(f: (A,B) => C): List[C] = (as,bs) match {
+    case (Nil, _) => Nil
+    case (_, Nil) => Nil
+    case(Cons(h1,t1), Cons(h2,t2)) => Cons(f(h1,h2), zipWith(t1,t2)(f))
+  }
+  // scala> zipWith(List(1,2,3), List(4,5,6))(_+_)
+  // res24: Chapter3Module.List[Int] = Cons(5,Cons(7,Cons(9,Nil)))
+
 }
 
