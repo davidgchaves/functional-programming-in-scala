@@ -296,5 +296,14 @@ object Chapter3Module {
   // scala> flatMap2(List(1,2,3))(i => List(i,i))
   // res21: Chapter3Module.List[Int] = Cons(1,Cons(1,Cons(2,Cons(2,Cons(3,Cons(3,Nil))))))
 
+
+  /*
+   * EXERCISE 3.21: Implement filter in terms of flatMap
+   */
+  def filter2[A](as: List[A])(pred: A => Boolean): List[A] =
+    flatMap(as)(a => if (pred(a)) List(a) else Nil)
+  // scala> filter(List(1,2,3,4,5,6,7,8))(_ % 2 == 1)
+  // res2: Chapter3Module.List[Int] = Cons(1,Cons(3,Cons(5,Cons(7,Nil))))
+
 }
 
