@@ -305,5 +305,18 @@ object Chapter3Module {
   // scala> filter(List(1,2,3,4,5,6,7,8))(_ % 2 == 1)
   // res2: Chapter3Module.List[Int] = Cons(1,Cons(3,Cons(5,Cons(7,Nil))))
 
+
+  /*
+   * EXERCISE 3.22: Implement a function that accepts two lists
+   * and constructs a new list by adding corresponding elements
+   */
+  def addLists(ns1: List[Int], ns2: List[Int]): List[Int] = (ns1,ns2) match {
+    case (Nil, _)                   => Nil
+    case (_, Nil)                   => Nil
+    case (Cons(h1,t1), Cons(h2,t2)) => Cons(h1+h2, addLists(t1,t2))
+  }
+  // scala> addLists(List(1,2,3), List(4,5,6))
+  // res15: Chapter3Module.List[Int] = Cons(5,Cons(7,Cons(9,Nil)))
+
 }
 
