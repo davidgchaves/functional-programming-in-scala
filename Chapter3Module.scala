@@ -332,5 +332,35 @@ object Chapter3Module {
   // scala> zipWith(List(1,2,3), List(4,5,6))(_+_)
   // res24: Chapter3Module.List[Int] = Cons(5,Cons(7,Cons(9,Nil)))
 
+
+  /*
+   * EXERCISE 3.24: Implement hasSubsequence for checking whether a List contains
+   * another List as a subsequence.
+   * Note: Any two values x and y can be compared for equality in Scala using the expression x == y.
+   */
+  // EXPLANATION:
+  //  There are 2 'true' cases:
+  //    (1) Both lists are Nil
+  //        case(as=Nil,sub=Nil)
+  //    (2) At one point both lists start with the same element and that's the case until we exhaust the sub list
+  //        case(as,sub) start with the same element and keep matching until the end of sub
+  def hasSubsequence[A](as: List[A], sub: List[A]): Boolean = (as, sub) match {
+    case (Nil, sub) if sub == Nil          => true
+    case (Nil, sub) if sub != Nil          => false
+    case (_, _)     if startsWith(as, sub) => true
+    case (Cons(_,t), sub)                  => hasSubsequence(t,sub)
+  }
+
+  def startsWith[A](as: List[A], sub: List[A]): Boolean = (as,sub) match {
+    case (_, Nil)                               => true
+    case (Cons(h1,t1), Cons(h2,t2)) if h1 == h2 => startsWith(t1,t2)
+    case _                                      => false
+  }
+  // scala> hasSubsequence(List(1,2,3,4), List(2,3))
+  // res2: Boolean = true
+  //
+  // scala> hasSubsequence(List(1,2,3,4), List(2,4))
+  // res3: Boolean = false
+
 }
 
