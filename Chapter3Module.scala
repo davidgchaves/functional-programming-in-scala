@@ -362,5 +362,15 @@ object Chapter3Module {
   // scala> hasSubsequence(List(1,2,3,4), List(2,4))
   // res3: Boolean = false
 
+
+  /*
+   * The Tree Algebraic Data Type (ADT) parameterized on type A, with 2 data constructors:
+   *  - Leaf(value)          (we can construct an empty list with Nil)
+   *  - Branch(left,right)   (we can construct a non-empty list with Cons(head,tail))
+   */
+  sealed trait Tree[+A]
+  case class Leaf[A](value: A) extends Tree[A]
+  case class Branch[A](left: Tree[A], right: Tree[A]) extends Tree[A]
+
 }
 
