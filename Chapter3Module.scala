@@ -441,5 +441,27 @@ object Chapter3Module {
     case Leaf(a)     => f(a)
   }
 
+
+  /*
+   * EXERCISE 3.29b: Implement sizeUsingFold
+   */
+  // NOTE:
+  //  The Leaf case when pattern matching
+  //    case Leaf(_) => 1
+  //  becomes the f function when folding
+  //    a => 1
+  //
+  //  The Branch case when pattern matching
+  //    case Branch(l,r) => 1 + size(l) + size(r)
+  //  becomes the g function when folding
+  //    (l,r) => 1 + l + r
+  def sizeUsingFold[A](t: Tree[A]): Int =
+    fold(t)(a => 1)((l,r) => 1 + l + r)
+  // scala> val tree1 = Branch(Branch(Leaf(1), Leaf(2)), Leaf(3))
+  // tree1: Chapter3Module.Branch[Int] = Branch(Branch(Leaf(1),Leaf(2)),Leaf(3))
+  //
+  // scala> sizeUsingFold(tree1)
+  // res3: Int = 5
+
 }
 
