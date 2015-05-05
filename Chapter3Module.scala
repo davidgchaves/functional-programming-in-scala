@@ -386,5 +386,20 @@ object Chapter3Module {
   // scala> size(tree1)
   // res16: Int = 5
 
+
+  /*
+   * EXERCISE 3.26: Implement maximum, which returns the maximum element in a Tree[Int].
+   * Note: In Scala, you can use x.max(y) or x max y to compute the maximum of two integers x and y.
+   */
+  def maximum(t: Tree[Int]): Int = t match {
+    case Branch(l,r) => maximum(l) max maximum(r)
+    case Leaf(n)     => n
+  }
+  // scala> val tree1 = Branch(Branch(Leaf(1), Leaf(2)), Branch(Leaf(7), Leaf(3)))
+  // tree1: Chapter3Module.Branch[Int] = Branch(Branch(Leaf(1),Leaf(2)),Branch(Leaf(7),Leaf(3)))
+  //
+  // scala> maximum(tree1)
+  // res8: Int = 7
+
 }
 
