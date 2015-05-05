@@ -510,5 +510,27 @@ object Chapter3Module {
   // scala> depthUsingFold(tree1)
   // res2: Int = 3
 
+
+  /*
+   * EXERCISE 3.29e: Implement mapUsingFold
+   */
+  // NOTE:
+  //  The Leaf case when pattern matching
+  //    case Leaf(a) => Leaf(f(a))
+  //  becomes the f function when folding
+  //    a => Leaf(f(a))
+  //
+  //  The Branch case when pattern matching
+  //    case Branch(l,r) => Branch(map(l)(f), map(r)(f))
+  //  becomes the g function when folding
+  //    (l,r) => Branch(l,r)
+  def mapUsingFold[A,B](t: Tree[A])(f: A => B): Tree[B] =
+    fold(t)(a => Leaf(f(a)): Tree[B])((l,r) => Branch(l,r))
+  // scala> val tree1 = Branch(Branch(Leaf(1), Branch(Leaf(2), Leaf(4))), Branch(Leaf(7), Leaf(3)))
+  // tree1: Chapter3Module.Branch[Int] = Branch(Branch(Leaf(1),Branch(Leaf(2),Leaf(4))),Branch(Leaf(7),Leaf(3)))
+  //
+  // scala> mapUsingFold(tree1)(_+10)
+  // res11: Chapter3Module.Tree[Int] = Branch(Branch(Leaf(11),Branch(Leaf(12),Leaf(14))),Branch(Leaf(17),Leaf(13)))
+
 }
 
