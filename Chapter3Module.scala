@@ -401,5 +401,22 @@ object Chapter3Module {
   // scala> maximum(tree1)
   // res8: Int = 7
 
+
+  /*
+   * EXERCISE 3.27: Implement depth, which returns the maximum path length from the root of a tree to any leaf.
+   */
+  def depth[A](t: Tree[A]): Int = t match {
+    case Branch(l,r) => (1 + depth(l)) max (1 + depth(r))
+    case Leaf(_)     => 0
+  }
+  // scala> val tree1 = Branch(
+  //                      Branch(Leaf(1),
+  //                        Branch(Leaf(2), Leaf(4))),
+  //                      Branch(Leaf(7), Leaf(3)))
+  // tree1: Chapter3Module.Branch[Int] = Branch(Branch(Leaf(1),Branch(Leaf(2),Leaf(4))),Branch(Leaf(7),Leaf(3)))
+  //
+  // scala> depth(tree1)
+  // res14: Int = 3
+
 }
 
