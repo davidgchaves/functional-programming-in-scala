@@ -485,5 +485,30 @@ object Chapter3Module {
   // scala> maximumUsingFold(tree1)
   // res2: Int = 7
 
+
+  /*
+   * EXERCISE 3.29d: Implement depthUsingFold
+   */
+  // NOTE:
+  //  The Leaf case when pattern matching
+  //    case Leaf(a) => 0
+  //  becomes the f function when folding
+  //    a => 0
+  //
+  //  The Branch case when pattern matching
+  //    case Branch(l,r) => (1 + depth(l)) max (1 + depth(r))
+  //  becomes the g function when folding
+  //    (l,r) => (1 + l) max (1 + r)
+  def depthUsingFold[A](t: Tree[A]): Int =
+    fold(t)(a => 0)((l,r) => 1 + (l max r))
+  // scala> val tree1 = Branch(
+  //                      Branch(Leaf(1),
+  //                        Branch(Leaf(2), Leaf(4))),
+  //                      Branch(Leaf(7), Leaf(3)))
+  // tree1: Chapter3Module.Branch[Int] = Branch(Branch(Leaf(1),Branch(Leaf(2),Leaf(4))),Branch(Leaf(7),Leaf(3)))
+  //
+  // scala> depthUsingFold(tree1)
+  // res2: Int = 3
+
 }
 
