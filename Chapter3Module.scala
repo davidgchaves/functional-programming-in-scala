@@ -432,5 +432,14 @@ object Chapter3Module {
   // scala> map(tree1)(_+10)
   // res19: Chapter3Module.Tree[Int] = Branch(Branch(Leaf(11),Branch(Leaf(12),Leaf(14))),Branch(Leaf(17),Leaf(13)))
 
+
+  /*
+   * EXERCISE 3.29a: Implement a fold function for Trees
+   */
+  def fold[A,B](t: Tree[A])(f: A => B)(g: (B,B) => B): B = t match {
+    case Branch(l,r) => g(fold(l)(f)(g), fold(r)(f)(g))
+    case Leaf(a)     => f(a)
+  }
+
 }
 
