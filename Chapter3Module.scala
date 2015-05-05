@@ -418,5 +418,19 @@ object Chapter3Module {
   // scala> depth(tree1)
   // res14: Int = 3
 
+
+  /*
+   * EXERCISE 3.28: Implement a map function that modifies each element in a tree with a given function.
+   */
+  def map[A,B](t: Tree[A])(f: A => B): Tree[B] = t match {
+    case Branch(l,r) => Branch(map(l)(f), map(r)(f))
+    case Leaf(a)     => Leaf(f(a))
+  }
+  // scala> val tree1 = Branch(Branch(Leaf(1), Branch(Leaf(2), Leaf(4))), Branch(Leaf(7), Leaf(3)))
+  // tree1: Chapter3Module.Branch[Int] = Branch(Branch(Leaf(1),Branch(Leaf(2),Leaf(4))),Branch(Leaf(7),Leaf(3)))
+  //
+  // scala> map(tree1)(_+10)
+  // res19: Chapter3Module.Tree[Int] = Branch(Branch(Leaf(11),Branch(Leaf(12),Leaf(14))),Branch(Leaf(17),Leaf(13)))
+
 }
 
