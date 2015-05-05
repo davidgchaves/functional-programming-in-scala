@@ -393,7 +393,7 @@ object Chapter3Module {
    */
   def maximum(t: Tree[Int]): Int = t match {
     case Branch(l,r) => maximum(l) max maximum(r)
-    case Leaf(n)     => n
+    case Leaf(a)     => a
   }
   // scala> val tree1 = Branch(Branch(Leaf(1), Leaf(2)), Branch(Leaf(7), Leaf(3)))
   // tree1: Chapter3Module.Branch[Int] = Branch(Branch(Leaf(1),Leaf(2)),Branch(Leaf(7),Leaf(3)))
@@ -462,6 +462,28 @@ object Chapter3Module {
   //
   // scala> sizeUsingFold(tree1)
   // res3: Int = 5
+
+
+  /*
+   * EXERCISE 3.29c: Implement maximumUsingFold
+   */
+  // NOTE:
+  //  The Leaf case when pattern matching
+  //    case Leaf(a) => 1
+  //  becomes the f function when folding
+  //    a => a
+  //
+  //  The Branch case when pattern matching
+  //    case Branch(l,r) => maximum(l) max maximum(r)
+  //  becomes the g function when folding
+  //    (l,r) => l max r
+  def maximumUsingFold(t: Tree[Int]): Int =
+    fold(t)(a => a)((l,r) => l max r)
+  // scala> val tree1 = Branch(Branch(Leaf(1), Leaf(2)), Branch(Leaf(7), Leaf(3)))
+  // tree1: Chapter3Module.Branch[Int] = Branch(Branch(Leaf(1),Leaf(2)),Branch(Leaf(7),Leaf(3)))
+  //
+  // scala> maximumUsingFold(tree1)
+  // res2: Int = 7
 
 }
 
